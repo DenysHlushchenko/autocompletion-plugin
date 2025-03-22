@@ -44,7 +44,17 @@ tasks {
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
+
+    val runMain by registering(JavaExec::class) {
+        group = "application"
+        description = "Runs the main function in OllamaClientKt"
+        classpath = sourceSets["main"].runtimeClasspath
+        mainClass.set("OllamaClientKt")
+    }
 }
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("io.github.ollama4j:ollama4j:1.0.93")
+    implementation("org.slf4j:slf4j-simple:2.0.16")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.25")
 }
