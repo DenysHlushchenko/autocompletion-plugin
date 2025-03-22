@@ -55,4 +55,23 @@ class TestTrie {
         val suggestions = trie.getSuggestions("pub");
         assertEquals(listOf("public"), suggestions);
     }
+
+    @Test
+    fun GivenEmptyTrie_WhenInsertingMoreThanTenSuggestions_ConfirmSuggestionsAreLimited() {
+        val suggestions = (0..20).map { it.toString() };
+        trie.insert("pub", suggestions.subList(0, 10));
+        trie.insert("pub", suggestions.subList(10, 20));
+
+        val storedSuggestions = trie.getSuggestions("pub");
+        println(trie.printTrie());
+        assertTrue(storedSuggestions.size == 10);
+    }
+
+    @Test
+    fun GivenEmptyTrie_WhenInsertingEmptySuggestions_ConfirmResultsAreCorrect() {
+        trie.insert("publ", emptyList());
+
+        val suggestions = trie.getSuggestions("publ");
+        assertTrue(suggestions.isEmpty());
+    }
 }

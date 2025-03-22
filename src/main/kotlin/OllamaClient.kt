@@ -26,12 +26,3 @@ class OllamaClient {
         }
     }
 }
-
-//fun main() {
-//    val client = OllamaClient();
-//    val suggestions = client.getSuggestions("me");
-//    println("RESULT: $suggestions");
-//}
-
-// type in terminal 'ollama serve' must be running on http://localhost:11434
-// test in terminal with './gradlew runMain'
